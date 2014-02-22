@@ -1,0 +1,8 @@
+Package: com.ccdog.hidesoftwareupdate
+Name: HideSoftwareUpdate
+Depends: firmware (>= 5.0), mobilesubstrate
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Hide Software Update in Preferences.app.
+Author: CC-Dog <cc941201@gmail.com>
+Section: Tweaks
