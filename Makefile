@@ -7,7 +7,6 @@ TWEAK_NAME = HideSoftwareUpdate
 HideSoftwareUpdate_FILES = Tweak.x
 
 include $(THEOS_MAKE_PATH)/tweak.mk
-iMessageSpamReporter_FRAMEWORKS = UIKit
 ADDITIONAL_OBJCFLAGS = -fobjc-arc
 
 after-install::
