@@ -9,10 +9,17 @@
 %hook PSListController
 
 - (NSInteger)tableView:(id)view numberOfRowsInSection:(NSInteger)section {
-    if ([[self specifier].identifier isEqualToString:@"General"] && (section == 0))
-        return 1;
+    if ((section == 0) && [[self specifier].identifier isEqualToString:@"General"])
+        return %orig(view, section) - 1;
     else
         return %orig(view, section);
+}
+
+- (id)tableView:(id)view cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ((indexPath.section == 0) && (indexPath.row > 0) && [[self specifier].identifier isEqualToString:@"General"])
+        return %orig(view, [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section]);
+    else
+        return %orig(view, indexPath);
 }
 
 %end
