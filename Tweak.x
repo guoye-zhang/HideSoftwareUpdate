@@ -22,4 +22,11 @@
         return %orig(view, indexPath);
 }
 
+- (void)tableView:(UITableView *)view didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ((indexPath.section == 0) && (indexPath.row > 0) && [[self specifier].identifier isEqualToString:@"General"])
+        return %orig(view, [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section]);
+    else
+        return %orig(view, indexPath);
+}
+
 %end
