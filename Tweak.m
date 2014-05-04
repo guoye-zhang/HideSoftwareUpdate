@@ -4,23 +4,23 @@
 
 - (NSInteger)tableView:(id)view numberOfRowsInSection:(NSInteger)section {
     if ((section == 0) && [[self specifier].identifier isEqualToString:@"General"])
-        return %orig(view, section) - 1;
+        return %orig - 1;
     else
-        return %orig(view, section);
+        return %orig;
 }
 
 - (id)tableView:(id)view cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ((indexPath.section == 0) && (indexPath.row > 0) && [[self specifier].identifier isEqualToString:@"General"])
-        return %orig(view, [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section]);
+        return %orig(view, [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0]);
     else
-        return %orig(view, indexPath);
+        return %orig;
 }
 
-- (void)tableView:(UITableView *)view didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(id)view didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ((indexPath.section == 0) && (indexPath.row > 0) && [[self specifier].identifier isEqualToString:@"General"])
-        return %orig(view, [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section]);
+        return %orig(view, [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0]);
     else
-        return %orig(view, indexPath);
+        return %orig;
 }
 
 %end
